@@ -9,32 +9,28 @@ public class dataConverter {
 	dataConverter(){
 		
 	}
+
 	/**
 	 * Converts the users body weight if the users weight is in metric, otherwise returns the weight
-	 * @param weight, the users weight
-	 * @param metric is the boolean that determines if the weight is converted to imperial
+	 * @param stone, the users weight in stone
+	 * @param pounds, the users weight in pounds
 	 * 
 	 * */
-	public double calculateWeight(double weight, Boolean metric) {
-		if(metric==true) {
-			double userWeight = weight*2.205;
-			return userWeight;
-		}
-		return weight;
-		
+	public double calculateWeightInKilograms(int stone, int pounds) {
+		double poundsToKg = pounds * 0.45359237;
+		double stoneToKg = stone * 6.350293;
+
+        return stoneToKg + poundsToKg;
 	}
 	/**
 	 * Converts user height from meters to inches
-	 * @param height is the users height
-	 * @param metric boolean to determine if the height should be converted
+	 * @param feet is the users height in feet
+	 * @param inches is the remainder of the users height in inches
 	 * */
-	public double calculateHeight(double height, Boolean metric) {
-		if(metric == true) {
-			double userHeight = height * 39.3701;
-			return userHeight;
-		}
-		
-		return height;
+	public double calculateHeightInMetres(int feet, int inches) {
+		double inchesToCentimetre = inches * 2.54;
+		double feetToCentimetre = feet * 30.48;
+        return (feetToCentimetre + inchesToCentimetre)/100;
 	}
 	
 }
